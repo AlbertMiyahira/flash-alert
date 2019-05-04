@@ -94,7 +94,7 @@ return [
 ->with([
     config('flash_alert.TYPE_KEY')  => 'primary | secondary | success | danger | warning | info | light | dark',
     config('flash_alert.TITLE_KEY') => trans('flash_msg.flash_title.success'),
-    config('flash_alert.MSG_KEY')   => '<a href="/">msg</a>',
+    config('flash_alert.MSG_KEY')   => 'msg',
     // option
     // use html tag config('flash_alert.MSG_KEY') => '<strong class="xxx">title</strong>',
     config('flash_alert.TITLE_ESCAPE_KEY') => true,
