@@ -92,8 +92,15 @@ return [
 ## Usage
 ```
 ->with([
-    config('flash_alert.TYPE_KEY') => 'success | info | warning | error',
-    config('flash_alert.MSG_KEY')  => 'message'
+    config('flash_alert.TYPE_KEY')  => 'primary | secondary | success | danger | warning | info | light | dark',
+    config('flash_alert.TITLE_KEY') => trans('flash_msg.flash_title.success'),
+    config('flash_alert.MSG_KEY')   => '<a href="/">msg</a>',
+    // option
+    // use html tag config('flash_alert.MSG_KEY') => '<strong class="xxx">title</strong>',
+    config('flash_alert.TITLE_ESCAPE_KEY') => true,
+    // use html tag config('flash_alert.MSG_KEY') => '<a href="/">msg</a>',
+    config('flash_alert.MSG_ESCAPE_KEY')  => true,
+    config('flash_alert.ALERT_CLASS_KEY') => 'primary | secondary | success | danger | warning | info | light | dark'
 ])
 ```
 example
@@ -137,8 +144,10 @@ return [
     'MSG_KEY' => 'FLASH_MSG',
     'TYPE_KEY' => 'FLASH_TYPE',
     'TITLE_KEY' => 'FLASH_TITLE',
-    // default
-    'MSG_ESCAPE_KEY' => 'false',
-    'TITLE_ESCAPE_KEY' => 'false'
+    /* options */
+    'MSG_NOT_ESCAPE_KEY' => 'false',// default
+    'TITLE_NOT_ESCAPE_KEY' => 'false',// default
+    // bootstrap alert class
+    'ALERT_CLASS_KEY' => 'FLASH_CLASS',
 ];
 ```
