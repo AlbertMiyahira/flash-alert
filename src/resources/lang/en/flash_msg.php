@@ -1,6 +1,12 @@
 <?php
 /* Flash Message */
 return [
+    'flash_title' => [
+        'success' => 'Success :',
+        'info' => 'Info :',
+        'warning' => 'Warning :',
+        'danger' => 'Error :',
+    ],
     'users' => [
         'register' => '%s様の会員情報を登録しました。',
         'update' => '%s様の会員情報を更新しました。',

@@ -1,8 +1,10 @@
 {{-- flash message --}}
 @php
-    $flashType = isset(${config('flash_alert.TYPE_KEY')}) ? ${config('flash_alert.TYPE_KEY')} :session(config('flash_alert.TYPE_KEY'));
-    $flashMsg = isset(${config('flash_alert.MSG_KEY')}) ? ${config('flash_alert.MSG_KEY')} :session(config('flash_alert.MSG_KEY'));
-    $isMsgEscape = isset(${config('flash_alert.MSG_ESCAPE_KEY')}) ? ${config('flash_alert.MSG_ESCAPE_KEY')} :session(config('flash_alert.MSG_ESCAPE_KEY'));
+    $flashType = isset(${config('flash_alert.TYPE_KEY')}) ? ${config('flash_alert.TYPE_KEY')} : session(config('flash_alert.TYPE_KEY'));
+    $flashMsg = isset(${config('flash_alert.MSG_KEY')}) ? ${config('flash_alert.MSG_KEY')} : session(config('flash_alert.MSG_KEY'));
+    $flashTitle = isset(${config('flash_alert.TITLE_KEY')}) ? ${config('flash_alert.TITLE_KEY')} : session(config('flash_alert.TITLE_KEY'));
+    $isMsgEscape = isset(${config('flash_alert.MSG_ESCAPE_KEY')}) ? ${config('flash_alert.MSG_ESCAPE_KEY')} : session(config('flash_alert.MSG_ESCAPE_KEY'));
+    $isTitleEscape = isset(${config('flash_alert.TITLE_ESCAPE_KEY')}) ? ${config('flash_alert.TITLE_ESCAPE_KEY')} : session(config('flash_alert.TITLE_ESCAPE_KEY'));
 @endphp
 @if($flashType)
     @switch($flashType)
@@ -11,6 +13,11 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            @if($isTitleEscape)
+                {!!$flashTitle!!}
+            @else
+                {{$flashTitle}}
+            @endif
             @if($isMsgEscape)
                 {!!$flashMsg!!}
             @else
@@ -24,6 +31,11 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            @if($isTitleEscape)
+                {!!$flashTitle!!}
+            @else
+                {{$flashTitle}}
+            @endif
             @if($isMsgEscape)
                 {!!$flashMsg!!}
             @else
@@ -37,6 +49,11 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            @if($isTitleEscape)
+                {!!$flashTitle!!}
+            @else
+                {{$flashTitle}}
+            @endif
             @if($isMsgEscape)
                 {!!$flashMsg!!}
             @else
@@ -50,6 +67,11 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            @if($isTitleEscape)
+                {!!$flashTitle!!}
+            @else
+                {{$flashTitle}}
+            @endif
             @if($isMsgEscape)
                 {!!$flashMsg!!}
             @else
@@ -57,7 +79,7 @@
             @endif
         </div>
         @break
-        
+
     @endswitch
 @endif
 {{-- validation error --}}
@@ -68,8 +90,10 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             @if($isMsgEscape)
+                {!!$errors->first(config('flash_alert.TITLE_KEY'))!!}
                 {!!$errors->first(config('flash_alert.MSG_KEY'))!!}
             @else
+                {{$errors->first(config('flash_alert.TITLE_KEY'))}}
                 {{$errors->first(config('flash_alert.MSG_KEY'))}}
             @endif
         </div>
