@@ -70,12 +70,18 @@ example
 ``` 
 resources/lang/xxx/flash_msg.php  
 <?php
-
+/* Flash Message */
 return [
+    'flash_title' => [
+        'success' => 'Success :',
+        'info' => 'Info :',
+        'warning' => 'Warning :',
+        'danger' => 'Error :',
+    ],
     'users' => [
         'register' => '%s様の会員情報を登録しました。',
-        'update'   => '%s様の会員情報を更新しました。',
-        'delete'   => '%s様の退会処理を行いました。',
+        'update' => '%s様の会員情報を更新しました。',
+        'delete' => '%s様の退会処理を行いました。',
     ],
     'error' => [
         'input' => '入力に誤りがあります。'
@@ -122,4 +128,17 @@ in FormRequest
                 }
             });
         }
+```
+change session key  
+config/flash_alert.php  
+```
+<?php
+return [
+    'MSG_KEY' => 'FLASH_MSG',
+    'TYPE_KEY' => 'FLASH_TYPE',
+    'TITLE_KEY' => 'FLASH_TITLE',
+    // default
+    'MSG_ESCAPE_KEY' => 'false',
+    'TITLE_ESCAPE_KEY' => 'false'
+];
 ```
