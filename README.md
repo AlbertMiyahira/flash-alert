@@ -8,14 +8,14 @@ BootStrap4.1
 ### composer
 `composer require albert-miyahira/flash-alert`  
 ### Artisan publish
-`php artisan config:cache`  
+`php artisan config:clear`  
 `php artisan vendor:publish --provider="AlbertMiyahira\FlashAlert\FlashAlertServiceProvider"` 
 /resources/lang/en/flash_msg.php  
 /resources/lang/ja/flash_msg.php (example)  
 /resources/views/vendor/flash_alert/flash_alert.blade.php
 ## Configuration
 add your parent controller or controller in __construct()  
-`Blade::component('vendor.flash_alert.flash_alert', 'flashAlert');`
+`Blade::component('vendor.flash_alert.flash_alert', 'flashAlert');`  
 example in parent controller
 ```
 <?php
@@ -54,6 +54,16 @@ call parent::__construct()
         {
 +            parent::__construct();
         }
+```
+add your layout.blade.php or base blade 
+```
+~
+~
+<body>
++   @include('vendor.flash_alert.flash_alert')
+    <main role="main" class="container">
+~
+~
 ```
 write flash message  
 example
