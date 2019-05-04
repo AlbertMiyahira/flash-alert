@@ -17,7 +17,7 @@ BootStrap4.1
 add your parent controller or controller in __construct()  
 `Blade::component('vendor.flash_alert.flash_alert', 'flashAlert');`  
 example in parent controller
-```
+```php
 <?php
 
     namespace App\Http\Controllers;
@@ -41,7 +41,7 @@ example in parent controller
 ```
 call parent::__construct() 
 
-```
+```php
 <?php
 
     namespace App\Http\Controllers;
@@ -56,7 +56,7 @@ call parent::__construct()
         }
 ```
 add your layout.blade.php or base blade 
-```
+```php
 ~
 ~
 <body>
@@ -65,10 +65,9 @@ add your layout.blade.php or base blade
 ~
 ~
 ```
-write flash message  
-example
-``` 
+write flash message    
 resources/lang/xxx/flash_msg.php  
+``` php
 <?php
 /* Flash Message */
 return [
@@ -90,7 +89,7 @@ return [
 ```
 
 ## Usage
-```
+```php
 ->with([
     config('flash_alert.TYPE_KEY')  => 'primary | secondary | success | danger | warning | info | light | dark',
     config('flash_alert.TITLE_KEY') => trans('flash_msg.flash_title.success'),
@@ -103,10 +102,9 @@ return [
     config('flash_alert.ALERT_CLASS_KEY') => 'primary | secondary | success | danger | warning | info | light | dark'
 ])
 ```
-example
-```
+example  
 in Controller
-
+```php
   public function test()
         {
             // redirect
@@ -121,9 +119,8 @@ in Controller
             ]);
         }
 ```
-```
 in FormRequest
-
+```php
  public function withValidator($validator)
         {
             $validator->after(function ($validator) {
@@ -138,7 +135,7 @@ in FormRequest
 ```
 change session key  
 config/flash_alert.php  
-```
+```php
 <?php
 return [
     'MSG_KEY' => 'FLASH_MSG',
